@@ -1,6 +1,6 @@
-# cryptfolio
+# ccc
 
-> A crypto currency portfolio
+> A Vue.js project
 
 ## Build Setup
 

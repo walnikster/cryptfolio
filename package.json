@@ -1,7 +1,7 @@
 {
   "name": "cryptfolio",
   "version": "1.0.0",
-  "description": "A crypto currency portfolio",
+  "description": "A Vue.js project",
   "author": "niki <niki@theliferocks.com>",
   "private": true,
   "scripts": {
