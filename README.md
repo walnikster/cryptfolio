@@ -1,6 +1,6 @@
-# ccc
+# cfolio
 
-> A Vue.js project
+> A Vue.js crypto project
 
 ## Build Setup
 
