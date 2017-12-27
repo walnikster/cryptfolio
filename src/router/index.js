@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import overview2 from '@/components/overview2'
-import add2 from '@/components/add2'
-import edit2 from '@/components/edit2'
-import details2 from '@/components/details2'
+import overview from '@/components/overview'
+import add from '@/components/add'
+import edit from '@/components/edit'
+import details from '@/components/details'
 
 
 Vue.use(Router)
@@ -12,23 +12,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'overview2',
-      component: overview2
+      name: 'overview',
+      component: overview
     },
     {
       path: '/add',
-      name: 'add2',
-      component: add2
+      name: 'add',
+      component: add
     },
     {
       path: '/edit',
-      name: 'edit2',
-      component: edit2
+      name: 'edit',
+      component: edit
     },
     {
       path: '/details',
-      name: 'details2',
-      component: details2
+      name: 'details',
+      component: details
     }
   ]
 })
