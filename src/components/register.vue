@@ -1,13 +1,13 @@
 <template>
 <div>
-overview
+register
 </div>
 </template>
 
 <script>
 import firebase from "firebase";
 export default {
-  name: "overview",
+  name: "register",
   data() {
     return {};
   }

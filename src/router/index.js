@@ -1,13 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
+import login from "@/components/login";
+import register from "@/components/register";
 import overview from "@/components/overview";
-import add from "@/components/add";
-import edit from "@/components/edit";
-import detailspage from "@/components/details";
+import landing from "@/components/landing";
+
+import firebase from "firebase";
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: "/",
@@ -15,20 +17,34 @@ export default new Router({
       component: overview
     },
     {
-      path: "/add",
-      name: "add",
-      component: add
+      path: "/login",
+      name: "login",
+      component: login
     },
     {
-      path: "/edit",
-      name: "edit",
-      component: edit
+      path: "/register",
+      name: "register",
+      component: register
     },
     {
-      path: "/details",
-      name: "details",
-      component: detailspage
+      path: "/landing",
+      name: "landing",
+      component: landing
     }
   ],
   mode: "history"
 });
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(user);
+    console.log("logged in");
+    router.push("/landing");
+  } else {
+    console.log(user);
+    console.log("logged out");
+    router.push("/");
+  }
+});
+
+export default router;
