@@ -10,8 +10,8 @@
          <router-link active-class="active" tag="li" data-target=".navbar-collapse" class="nav-item" to="/" exact><a class="nav-link">Overview</a></router-link>
          <router-link v-if="!loggedin" active-class="active" tag="li" data-target=".navbar-collapse" class="nav-item" to="/login"><a class="nav-link">login</a></router-link>
          <router-link v-if="!loggedin" active-class="active" tag="li" data-target=".navbar-collapse" class="nav-item" to="/register"><a class="nav-link">register</a></router-link>
-         <router-link active-class="active" tag="li" data-target=".navbar-collapse" class="nav-item" to="/landing"><a class="nav-link">landing</a></router-link>
-         <li v-if="loggedin" class="nav-item"><a class="nav-link" v-on:click="logout">Logout</a></li>
+         <router-link v-if="loggedin" active-class="active" tag="li" data-target=".navbar-collapse" class="nav-item" to="/landing"><a class="nav-link">landing</a></router-link>
+         <li v-if="loggedin" class="nav-item"><a class="nav-link" v-on:click.prevent="logout" href="#">Logout</a></li>
     </ul>
   </div>
 </nav>

@@ -1,8 +1,5 @@
 <template>
 <div>
-
-
-
 <div class="form-group">
 <label>Username</label>
 <input class="form-control" type="text" v-model="username">
@@ -14,9 +11,6 @@
 <div class="form-group">
 <button class="form-control" id="login" @click="login" >Login</button>
 </div>
-
-
-
 </div>
 </template>
 

@@ -4,7 +4,7 @@
   <input v-model="newItem.name" type="text">
   <input v-model="newItem.value" type="text">
 <button id="add" @click="addItem">Add</button>
-<li v-for="item in items" v-bind:key="item.id" >{{item.a}} - {{item.b}}</li>
+<li v-for="item in items" v-bind:key="item.key" >{{item.a}} - {{item.b}} - {{item.key}} <span @click="deleteItem(item.key)">delete</span></li>
 </ul>
 </div>
 </template>
@@ -32,18 +32,61 @@ export default {
         .child(userId)
         .push({ a: this.newItem.name, b: this.newItem.value });
       this.newItem = { name: "", value: "" };
+      let its = [];
+      firebase
+        .database()
+        .ref("dummy")
+        .child(userId)
+        .on("value", function(dataSnapshot) {
+          dataSnapshot.forEach(function(childSnapshot) {
+            var item = childSnapshot.val();
+            item["key"] = childSnapshot.key;
+            its.push(item);
+          });
+        });
+      this.items = its;
+    },
+    deleteItem(key) {
+      const userId = firebase.auth().currentUser.uid;
+      firebase
+        .database()
+        .ref("dummy")
+        .child(userId)
+        .child(key)
+        .remove();
+      let its = [];
+      firebase
+        .database()
+        .ref("dummy")
+        .child(userId)
+        .on("value", function(dataSnapshot) {
+          dataSnapshot.forEach(function(childSnapshot) {
+            var item = childSnapshot.val();
+            item["key"] = childSnapshot.key;
+            its.push(item);
+          });
+        });
+      this.items = its;
     }
   },
-  mounted: function() {
+  updated: function() {
     if (firebase.auth().currentUser) {
       const userId = firebase.auth().currentUser.uid;
-      this.$bindAsArray(
-        "items",
-        firebase
-          .database()
-          .ref("dummy")
-          .child(userId)
-      );
+      let its = [];
+      this.items = [];
+      firebase
+        .database()
+        .ref("dummy")
+        .child(userId)
+        .on("value", function(dataSnapshot) {
+          dataSnapshot.forEach(function(childSnapshot) {
+            var item = childSnapshot.val();
+            item["key"] = childSnapshot.key;
+            its.push(item);
+          });
+        });
+      this.items = its;
+      console.log(this.items);
     }
   }
 };

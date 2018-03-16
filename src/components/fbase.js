@@ -1,4 +1,4 @@
-import Firebase from "firebase";
+import firebase from "firebase";
 // Initialize Firebase
 const config = {
   apiKey: "AIzaSyCihow8Nixwnc_UylMzCGhlPQMIzt5KKHs",
@@ -8,4 +8,4 @@ const config = {
   storageBucket: "cryptfolio-8cce6.appspot.com",
   messagingSenderId: "6824531650"
 };
-const fbapp = Firebase.initializeApp(config);
+firebase.initializeApp(config);
