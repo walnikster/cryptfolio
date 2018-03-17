@@ -69,7 +69,7 @@ export default {
       this.items = its;
     }
   },
-  updated: function() {
+  mounted: function() {
     if (firebase.auth().currentUser) {
       const userId = firebase.auth().currentUser.uid;
       let its = [];
